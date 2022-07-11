@@ -14,8 +14,16 @@
       <div class="container">
         <nav class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><%= link_to 'Home', root_path, class: 'nav-link px-2 text-white' %></li>
-            <li><%= link_to 'Posts', posts_path, class: 'nav-link px-2 text-white' %></li>
+            <li><%= link_to 'Posts', root_path, class: 'nav-link px-2 text-white' %></li>
+            <li><%= link_to '|', root_path, class: 'nav-link px-2 text-white' %></li>
+            <% if user_signed_in? %>
+              <li><%= link_to 'Log out', destroy_user_session_path, class: 'nav-link px-2 text-white',
+               method: :delete %></li>
+            <% else %>
+              <li><%= link_to 'Log_in', new_user_session_path, class: 'nav-link px-2 text-white' %></li>
+              <li><%= link_to 'Registration',
+                new_user_registration_path, class: 'nav-link px-2 text-white' %></li>
+            <% end %>
           </ul>
         </nav>
       </div>
